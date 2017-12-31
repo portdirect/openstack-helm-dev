@@ -1,0 +1,41 @@
+# openstack stack create --wait -t network.yaml network
+heat_template_version: 2016-10-14
+
+parameters:
+  public_net:
+    type: string
+    default: public
+  ssh_key:
+    type: string
+    default: osh-vm-key
+  private_net_cidr:
+    type: string
+    default: 10.0.0.0/24
+
+resources:
+  router:
+    type: OS::Neutron::Router
+    properties:
+      external_gateway_info:
+        network: {get_param: public_net}
+
+  router_interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router_id: { get_resource: router }
+      subnet_id: { get_resource: private_subnet }
+
+  private_net:
+    type: OS::Neutron::Net
+    properties:
+      name: private
+
+  private_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      name: private
+      network: { get_resource: private_net }
+      cidr: {get_param: private_net_cidr }
+      dns_nameservers:
+        - 8.8.8.8
+        - 8.8.4.4

@@ -1,0 +1,11 @@
+# openstack stack create --wait  -t flavors.yaml flavors
+heat_template_version: 2016-10-14
+
+resources:
+  flavor:
+    type: OS::Nova::Flavor
+    properties:
+      disk: 64
+      name: osh-dev
+      ram: 30720
+      vcpus: 8
