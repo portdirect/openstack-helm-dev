@@ -12,23 +12,3 @@ resources:
       min_ram: 1024
       name: ubuntu-16.04
       os_distro: ubuntu
-  centos_image:
-    type: OS::Glance::Image
-    properties:
-      container_format: bare
-      disk_format: qcow2
-      location: http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1802.qcow2c
-      min_disk: 10
-      min_ram: 1024
-      name: centos-7
-      os_distro: centos
-  fedora_image:
-    type: OS::Glance::Image
-    properties:
-      container_format: bare
-      disk_format: qcow2
-      location: https://download.fedoraproject.org/pub/fedora/linux/releases/27/CloudImages/x86_64/images/Fedora-Cloud-Base-27-1.6.x86_64.qcow2
-      min_disk: 10
-      min_ram: 1024
-      name: fedora-27
-      os_distro: fedora

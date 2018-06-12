@@ -5,7 +5,7 @@ resources:
   flavor:
     type: OS::Nova::Flavor
     properties:
-      disk: 64
+      disk: 32
       name: osh-dev
-      ram: 30720
-      vcpus: 8
+      ram: 16384
+      vcpus: 4
